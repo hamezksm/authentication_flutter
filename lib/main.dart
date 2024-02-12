@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:local_auth/local_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -24,6 +26,8 @@ class MyApp extends StatelessWidget {
 
 class AuthenticationPage extends StatelessWidget {
   final LocalAuthentication _localAuth = LocalAuthentication();
+
+  AuthenticationPage({super.key});
 
   @override
   Widget build(BuildContext context) {
