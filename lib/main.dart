@@ -15,6 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Auth',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
@@ -40,6 +41,7 @@ class AuthenticationPage extends StatelessWidget {
           onPressed: () async {
             // Check if biometrics are available
             bool canCheckBiometrics = await _localAuth.canCheckBiometrics;
+            print(canCheckBiometrics);
 
             if (canCheckBiometrics) {
               // Attempt biometric authentication
@@ -48,10 +50,11 @@ class AuthenticationPage extends StatelessWidget {
               if (authenticated) {
                 // User successfully authenticated with biometrics
                 _navigateToNextScreen();
-              } else {
-                // Biometric authentication failed or not available
-                _showPinPasswordDialog(context);
               }
+              // else {
+              //   // Biometric authentication failed or not available
+              //   _showPinPasswordDialog(context);
+              // }
             } else {
               // Biometrics not available
               _showPinPasswordDialog(context);
@@ -68,7 +71,7 @@ class AuthenticationPage extends StatelessWidget {
 
     try {
       authenticated = await _localAuth.authenticate(
-        localizedReason: 'Authenticate to access the app',
+        localizedReason: 'Input fingerprint to authenticate',
         // useErrorDialogs: true,
         // stickyAuth: true,
       );
