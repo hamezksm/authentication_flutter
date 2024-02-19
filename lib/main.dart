@@ -51,13 +51,6 @@ class AuthenticationPage extends StatelessWidget {
                 // User successfully authenticated with biometrics
                 _navigateToNextScreen();
               }
-              // else {
-              //   // Biometric authentication failed or not available
-              //   _showPinPasswordDialog(context);
-              // }
-            } else {
-              // Biometrics not available
-              _showPinPasswordDialog(context);
             }
           },
           child: const Text('Authenticate'),
